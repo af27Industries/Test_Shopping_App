@@ -1,28 +1,35 @@
-package com.example.testshoppingapp
+package com.example.testshoppingapp.ui.login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.splashscreen.SplashScreen
 import android.view.View
 import android.view.ViewTreeObserver
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.testshoppingapp.R
+import com.example.testshoppingapp.databinding.ActivityAuthBinding
 import java.util.*
 import kotlin.concurrent.schedule
 
+class AuthActivity : AppCompatActivity() {
 
-class MainActivity : AppCompatActivity() {
-
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var binding: ActivityAuthBinding
     var contentHasLoaded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         installSplashScreen()
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityAuthBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         startLoadingContent()
         setupSplashScreen()
-
     }
 
     private fun startLoadingContent() {
